@@ -17,7 +17,8 @@
 
                 //verirfica se cotrolador possui uma função
                 if(is_callable(array($obj, $metodo))){
-                    echo "Existe a função <br>";
+                    // echo "Existe a função <br>";
 					call_user_func_array(array($obj, $metodo),array());
 				}
             }
+?>
