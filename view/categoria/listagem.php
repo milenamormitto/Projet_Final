@@ -15,10 +15,10 @@
                 <td><?= $categoria['nome'] ?></td>
                 <td>
                     <a href="http://" class="btn btn-danger" title="excluir">
-                        <i class="fa-solid fa-trash"></i>
+                        <i class="fa-solid fa-trash-can"></i>
                     </a>
                     <a href="http://" class="btn btn-primary" title="editar">
-                        <i class="fa-solid fa-paintbrush-fine"></i>
+                        <i class="fa-solid fa-pen"></i>
                     </a>
                 </td>
             </tr>
