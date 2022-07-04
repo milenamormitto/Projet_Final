@@ -15,8 +15,19 @@
         }
     
         function inserir(){
-        
-        }       
+            $categorias = $this->model->inserir();
+            $this->load_template("categoria/listagem.php", $categorias);
+        }
+
+        function excluir($id){
+            $this->model->excluir($id);
+            header('Location: ?c=categoria');
+        }
+
+        function editar(){
+
+        }
+
     }
     
 
