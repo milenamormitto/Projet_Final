@@ -1,7 +1,8 @@
 <?php
 
 require "config\Conexao.php";
-class CategoriaModel{
+class CategoriaModel
+{
     function __construct()
     {
         $this->conexao = Conexao::getConnection();
@@ -35,7 +36,7 @@ class CategoriaModel{
     {
         $sql = "SELECT * FROM categoria";
         $comando = $this->conexao->prepare($sql);
-        if($comando->execute()){
+        if ($comando->execute()) {
             $resultado = $comando->get_result();
             return $resultado->fetch_all(MYSQLI_ASSOC);
         }
@@ -46,8 +47,8 @@ class CategoriaModel{
     {
         $sql = "SELECT * FROM categoria WHERE idcategoria = ?";
         $comando = $this->conexao->prepare($sql);
-        $comando->bind_param("i",$id);
-        if($comando->execute()){
+        $comando->bind_param("i", $id);
+        if ($comando->execute()) {
             $resultado = $comando->get_result();
             return $resultado->fetch_assoc();
         }
