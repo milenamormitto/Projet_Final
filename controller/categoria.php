@@ -1,8 +1,8 @@
 <?php
     require "model/CategoriaModel.php";
-    require "Controller/Controller.php";
 
-    Class Categoria extends Controller{
+
+    Class Categoria {
 
         function __construct(){
             $this->model = new CategoriaModel();
@@ -10,13 +10,19 @@
     
         function index(){
             $categorias = $this->model->buscarTodos();
-            $this->load_template("categoria/listagem.php", $categorias);
+            include "view/template/cabecalho.php";
+            include "view/template/menu.php";
+            include "view/categoria/listagem.php";
+            include "view/template/rodape.php";
             
         }
     
         function inserir(){
-            $categorias = $this->model->inserir();
-            $this->load_template("categoria/listagem.php", $categorias);
+            $categorias = $this->model->buscarTodos();
+            include "view/template/cabecalho.php";
+            include "view/template/menu.php";
+            include "view/categoria/form.php";
+            include "view/template/rodape.php";
         }
 
         function excluir($id){

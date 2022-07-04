@@ -17,7 +17,7 @@ if (isset($_GET['c'])) {
         //cria o objeto controlador
         $obj = new $controller();
 
-        $id = $_GET['id'] ?? "";
+        $id = $_GET['id'] ?? null;
 
         //verirfica se cotrolador possui uma função
         if (is_callable(array($obj, $metodo))) {
