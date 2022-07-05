@@ -1,30 +1,29 @@
 <?php
+require "model/ProdutoModel.php";
 require "model/CategoriaModel.php";
-
-
-class Categoria
+class Produto
 {
-
     function __construct()
     {
-        $this->model = new CategoriaModel();
+        $this->model = new ProdutoModel();
+        $this->categoria_model = new CategoriaModel();
     }
 
     function index()
     {
-        $categorias = $this->model->buscarTodos();
+        $produtos = $this->model->buscarTodos();
         include "view/template/cabecalho.php";
         include "view/template/menu.php";
-        include "view/categoria/listagem.php";
+        include "view/produto/listagem.php";
         include "view/template/rodape.php";
     }
 
     function add()
     {
-        $categorias = $this->model->buscarTodos();
+        $categorias = $this->categoria_model->buscarTodos();
         include "view/template/cabecalho.php";
         include "view/template/menu.php";
-        include "view/categoria/form.php";
+        include "view/produto/form.php";
         include "view/template/rodape.php";
     }
 
@@ -38,10 +37,10 @@ class Categoria
     {
         if (isset($_POST['categoria'])  && !empty($_POST['categoria'])) {
 
-            if (empty($_POST['idcategoria'])) {
+            if (empty($_POST['idCategoria'])) {
                 $this->model->inserir($_POST['categoria']);
             } else {
-                $this->model->atualizar($_POST['categoria'], $_POST['idcategoria']);
+                $this->model->atualizar($_POST['categoria'], $_POST['idCategoria']);
             }
             header('Location: ?c=categoria');
         } else {
@@ -59,10 +58,3 @@ class Categoria
         include "view/template/rodape.php";
     }
 }
-    
-
-    //$model->inserir("Produto de Limpeza"); //inserir dados
-    //$model->excluir(1); //exclui dados
-    //$model->atualizar("Smartphone", 2); //atulixa os dados
-    //var_dump($model->buscarTodos()); //busca todos itens
-    //var_dump($model->buscarPorId(2)); // busca algum item pelo seu ID

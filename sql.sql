@@ -41,3 +41,5 @@ AUTO_INCREMENT=8
     )
     COLLATE='utf8_general_ci'
     ENGINE=InnoDB
+--add no database do lab IV
+	`marca` VARCHAR(150) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
