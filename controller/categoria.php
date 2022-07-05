@@ -38,10 +38,10 @@ class Categoria
     {
         if (isset($_POST['categoria'])  && !empty($_POST['categoria'])) {
 
-            if (empty($_POST['idCategoria'])) {
+            if (empty($_POST['idcategoria'])) {
                 $this->model->inserir($_POST['categoria']);
-            } else {
-                $this->model->atualizar($_POST['idcategoria'], $_POST['categoria']);
+            }else {
+                $this->model->atualizar($_POST['categoria'], $_POST['idcategoria']);
             }
             header('Location: ?c=categoria');
         } else {
@@ -51,7 +51,8 @@ class Categoria
 
     function editar($id)
     {
-        $categoriaa = $this->model->buscarTodos($id);
+        $categorias = $this->model->buscarTodos();
+        $categoria = $this->model->buscarPorId($id);
         include "view/template/cabecalho.php";
         include "view/template/menu.php";
         include "view/categoria/form.php";

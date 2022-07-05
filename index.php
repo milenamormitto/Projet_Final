@@ -1,6 +1,6 @@
 <?php
-//$base_url = "http://localhost/3infob/Projeto_Final/index.php"; //url para o pc da escola
-$base_url = "http://localhost/Projeto_Final/Projet_Final/index.php"; //url para o pc em casa
+  $base_url = "http://localhost/3infob/Projeto_Final/index.php"; //url para o pc da escola
+//$base_url = "http://localhost/Projeto_Final/Projet_Final/index.php"; //url para o pc em casa
 
 if (isset($_GET['c'])) {
     $controller = ucfirst($_GET['c']);

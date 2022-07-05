@@ -1,16 +1,16 @@
 <?php
 
 require "config\Conexao.php";
-class ProdutoModel
+class CategoriaModel
 {
     function __construct()
     {
         $this->conexao = Conexao::getConnection();
     }
 
-    function inserir($nome, $descricao, $preco, $marca, $foto, $idCategoria)
+    function inserir($nome)
     {
-        $sql = "INSERT INTO produto (nome) values (?)";
+        $sql = "INSERT INTO categoria (nome) values (?)";
         $comando = $this->conexao->prepare($sql);
         $comando->bind_param("s", $nome);
         return $comando->execute();
@@ -23,7 +23,7 @@ class ProdutoModel
         $comando->bind_param("i", $id);
         return $comando->execute();
     }
-    
+
     function atualizar($nome, $id)
     {
         $sql = "UPDATE categoria SET nome=? WHERE idCategoria = ?";
