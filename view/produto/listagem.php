@@ -19,7 +19,14 @@
                     <td><?= $produto['nome'] ?></td>
                     <td><?= $produto['preco'] ?></td>
                     <td><?= $produto['marca'] ?></td>
-                    <td><?= $produto['foto'] ?></td>
+                    
+                    <td>
+                        <a href="<?= $produto['foto'] ?>">
+                            <img src="<?= $produto['foto'] ?>" height="50px">
+                        </a>
+                    </td>
+                    
+
                     <td>
                         <a href="<?= base_url() ?>?c=produto&m=excluir&id=<?= $produto['idProduto'] ?>" class="btn btn-danger" title="excluir">
                             <i class="fa-solid fa-trash-can"></i>

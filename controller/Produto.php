@@ -51,7 +51,7 @@ class Produto
         if (isset($_POST['nome'])  && !empty($_POST['nome'])) {
             $nome_foto = $this->salvarFoto() ?? "pictures/semfoto.jpg";
 
-            if (empty($_POST['idProduto'])) {
+            if (empty($_POST['idproduto'])) {
                 $this->model->inserir(
                     $_POST['nome'],
                     $_POST['descricao'],
@@ -62,7 +62,7 @@ class Produto
                 );
             } else {
                 $this->model->atualizar(
-                    $_POST['idProduto'],
+                    $_POST['idproduto'],
                     $_POST['nome'],
                     $_POST['descricao'],
                     $_POST['preco'],
@@ -80,8 +80,6 @@ class Produto
     function editar($id)
     {
         $categorias = $this->categoria_model->buscarTodos();
-        $categoria = $this->categoria_model->buscarPorId($id);
-        $produtos = $this->model->buscarTodos();
         $produto = $this->model->buscarPorId($id);
         include "view/template/cabecalho.php";
         include "view/template/menu.php";

@@ -7,8 +7,10 @@ class Conexao{
 
     public static function getConnection(){
     $ip = "127.0.0.1";
-    $port = "3306";
-    $user = "guilherme";
+    //$port = "3306";
+    $port = "3366";
+    //$user = "guilherme";
+    $user = "root";
     $pass = "";
     $db = "db_catalogo3E2";
 

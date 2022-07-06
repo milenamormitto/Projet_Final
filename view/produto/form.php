@@ -40,8 +40,8 @@
             </select>
         </div>
 
-        <input type="hidden" name="idproduto" value="<?= $categoria['idProduto'] ?? "" ?>">
+        <input type="hidden" name="idproduto" value="<?= $produto['idProduto'] ?? "" ?>">
 
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 </div>
