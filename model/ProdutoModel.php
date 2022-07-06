@@ -10,7 +10,7 @@ class ProdutoModel
 
     function inserir($nome, $descricao, $preco, $marca, $foto, $idCategoria)
     {
-        $sql = "INSERT INTO produto ($nome) values (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO produto (nome, descricao, preco, marca, foto, categoria_idCategoria) values (?, ?, ?, ?, ?, ?)";
         $comando = $this->conexao->prepare($sql);
         $comando->bind_param("ssdssi", $nome, $descricao, $preco, $marca, $foto, $idCategoria);
         return $comando->execute();

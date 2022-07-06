@@ -10,7 +10,7 @@ class CategoriaModel
 
     function inserir($nome)
     {
-        $sql = "INSERT INTO categoria ($nome) values (?)";
+        $sql = "INSERT INTO categoria (nome) values (?)";
         $comando = $this->conexao->prepare($sql);
         $comando->bind_param("s", $nome);
         return $comando->execute();

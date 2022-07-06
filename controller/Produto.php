@@ -30,31 +30,62 @@ class Produto
     function excluir($id)
     {
         $this->model->excluir($id);
-        header('Location: ?c=categoria');
+        header('Location: ?c=produto');
+    }
+
+    function salvarFoto()
+    {
+        if (isset($_FILES['foto']) && !$_FILES['foto']['error']) {
+            echo $nome_img = time() . $_FILES['foto']['name'];
+            echo $origem = $_FILES['foto']['tmp_name'];
+            echo $destino = "pictures/$nome_img";
+            if (move_uploaded_file($origem, $destino)) {
+                return $destino;
+            }
+        }
+        return false;
     }
 
     function salvar()
     {
-        if (isset($_POST['categoria'])  && !empty($_POST['categoria'])) {
+        if (isset($_POST['nome'])  && !empty($_POST['nome'])) {
+            $nome_foto = $this->salvarFoto() ?? "pictures/semfoto.jpg";
 
-            if (empty($_POST['idCategoria'])) {
-                $this->model->inserir($_POST['categoria']);
+            if (empty($_POST['idProduto'])) {
+                $this->model->inserir(
+                    $_POST['nome'],
+                    $_POST['descricao'],
+                    $_POST['preco'],
+                    $_POST['marca'],
+                    $nome_foto,
+                    $_POST['categoria']
+                );
             } else {
-                $this->model->atualizar($_POST['categoria'], $_POST['idCategoria']);
+                $this->model->atualizar(
+                    $_POST['idProduto'],
+                    $_POST['nome'],
+                    $_POST['descricao'],
+                    $_POST['preco'],
+                    $_POST['marca'],
+                    $nome_foto,
+                    $_POST['categoria']
+                );
             }
-            header('Location: ?c=categoria');
+            header('Location: ?c=produto');
         } else {
-            echo "Ocorreu um erro, pois o campo não foi preenchido";
+            echo "Ocorreu um erro, pois os dados não foram enviados";
         }
     }
 
     function editar($id)
     {
-        $categorias = $this->model->buscarTodos();
-        $categoria = $this->model->buscarPorId($id);
+        $categorias = $this->categoria_model->buscarTodos();
+        $categoria = $this->categoria_model->buscarPorId($id);
+        $produtos = $this->model->buscarTodos();
+        $produto = $this->model->buscarPorId($id);
         include "view/template/cabecalho.php";
         include "view/template/menu.php";
-        include "view/categoria/form.php";
+        include "view/produto/form.php";
         include "view/template/rodape.php";
     }
 }
