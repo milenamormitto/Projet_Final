@@ -1,5 +1,5 @@
 <?php
-$base_url = "projetofinalguilherme.epizy.com/index.php"; //url para o pc da escola
+$base_url = "dbcatalogo3e2guilherme.42web.io/index.php";
     $controlador_padrao = 'Home';
     $controller = ucfirst($_GET['c'] ?? $controlador_padrao);
     $path_controller = "controller/$controller.php";
