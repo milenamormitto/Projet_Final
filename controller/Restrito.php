@@ -7,7 +7,7 @@ class Restrito
 
     function __construct()
     {
-        $this = new UsuarioModel();
+        $this->usuario = new UsuarioModel();
     }
 
     function login($id)
@@ -17,11 +17,25 @@ class Restrito
         include "view/template/rodape.php";
     }
 
+    function logout()
+    {
+        session_start();
+        unset($_SESSION['usuario']);
+        session_destroy();
+        header('Location: ?c=restrito&m=login');
+    }
+
     function entrar()
     {
         if (isset($_POST['login']) && isset($_POST['senha'])) {
             $usuario = $this->usuario->buscarPorLogin($_POST['login']);
-            var_dump($usuario);
+            if (password_verify($_POST['senha'], $usuario['senha'])) {
+                session_start();
+                $_SESSION['usuario'] = $usuario['login'];
+                header('Location: ?c=categoria');
+            } else {
+                header('Location: ?c=restrito&m=login');
+            }
         }
     }
 }

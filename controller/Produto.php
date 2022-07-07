@@ -5,6 +5,10 @@ class Produto
 {
     function __construct()
     {
+        session_start();
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: ?c=restrito&m=login');
+        }
         $this->model = new ProdutoModel();
         $this->categoria_model = new CategoriaModel();
     }
