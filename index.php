@@ -1,8 +1,5 @@
 <?php
-$base_url = "http://localhost/3infob/Projet_Final/index.php"; //url para o pc da escola
-//$base_url = "http://localhost/Projeto_Final/Projet_Final/index.php"; //url para o pc em casa
-
-if (isset($_GET['c'])) {
+$base_url = "projetofinalguilherme.epizy.com/index.php"; //url para o pc da escola
     $controlador_padrao = 'Home';
     $controller = ucfirst($_GET['c'] ?? $controlador_padrao);
     $path_controller = "controller/$controller.php";
@@ -27,7 +24,6 @@ if (isset($_GET['c'])) {
             call_user_func_array(array($obj, $metodo), array($id));
         }
     }
-}
 
 function base_url()
 {
