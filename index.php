@@ -3,7 +3,8 @@ $base_url = "http://localhost/3infob/Projet_Final/index.php"; //url para o pc da
 //$base_url = "http://localhost/Projeto_Final/Projet_Final/index.php"; //url para o pc em casa
 
 if (isset($_GET['c'])) {
-    $controller = ucfirst($_GET['c']);
+    $controlador_padrao = 'Home';
+    $controller = ucfirst($_GET['c'] ?? $controlador_padrao);
     $path_controller = "controller/$controller.php";
 
     //verirfica se o arquivo controller existe

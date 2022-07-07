@@ -1,5 +1,5 @@
 <?php
-require "model/UsuarioModel.php";
+require_once "model/UsuarioModel.php";
 
 
 class Usuario
@@ -37,16 +37,15 @@ class Usuario
     function salvar()
     {
         if (isset($_POST['login'])  && !empty($_POST['login']) && !empty($_POST['senha'])) {
- 
+
             if (empty($_POST['idusuario'])) {
 
-                if(!$this->model->buscarPorLogin($_POST['login'])){
+                if (!$this->model->buscarPorLogin($_POST['login'])) {
                     $this->model->inserir($_POST['login'], password_hash($_POST['senha'], PASSWORD_BCRYPT));
-                }else{
+                } else {
                     echo "Ocorreu um erro, pois o Usuario ja existe";
                     die();
                 }
-                
             } else {
                 $this->model->atualizar($_POST['idusuario'], $_POST['login'], password_hash($_POST['senha'], PASSWORD_BCRYPT));
             }
